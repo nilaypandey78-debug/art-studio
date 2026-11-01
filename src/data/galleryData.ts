@@ -1,0 +1,490 @@
+import { Artist, Artwork, EventProgram, Exhibition } from '../types';
+
+export const GALLERY_INFO = {
+  name: "Dhruva's Art Studio N Gallery",
+  tagline: "A Contemporary Art Space in Chhattisgarh",
+  subTagline: "A platform for artistic expression, dialogue and cultural exchange.",
+  locationHeadline: "A Contemporary Art Space in Raipur",
+  address: "Near Kalpavriksh Resort and Villa, Old Dhamtari Road, Raipur, Chhattisgarh – 492002",
+  phone: "+91 97700 00000",
+  email: "info@dhruvasgallery.com",
+  timings: "Tuesday – Sunday: 11:00 AM – 7:30 PM (Mondays Closed)",
+  admission: "Free Public Admission",
+  established: "2024",
+  googleMapsQuery: "Dhruva's Art Studio N Gallery Old Dhamtari Road Raipur Chhattisgarh 492002",
+  coordinates: { lat: 21.1892, lng: 81.6548 }
+};
+
+export const INITIAL_EXHIBITIONS: Exhibition[] = [
+  {
+    id: 'maati-ka-avtaran',
+    title: 'Maati Ka Avtaran',
+    subtitle: 'Contemporary Perspectives on Earth, Memory and Belonging',
+    dates: '25 – 27 September 2026',
+    dateRange: { start: '2026-09-25', end: '2026-09-27' },
+    status: 'current',
+    curator: 'Chirayu Kumar Sinha',
+    location: "Dhruva's Art Studio N Gallery, Raipur",
+    description: "Maati Ka Avtaran brings together a diverse group of contemporary artists who explore the many meanings, materialities and memories associated with clay. The exhibition looks at clay not just as a medium, but as a living cultural material — rooted in land, labor, tradition and everyday life.",
+    curatorialEssay: "In Chhattisgarh, clay is not merely an inert geological deposit; it is an ancestral vocabulary. From ritual terracotta hearths to monumental contemporary expressions, the earth holds the tactile memory of our communities. Maati Ka Avtaran invites viewers to confront questions of ecological stewardship, spiritual inheritance, and sculptural form in dialogue with contemporary life.",
+    image: '/src/assets/images/terracotta_sculpture_1793542982435.jpg',
+    heroImage: '/src/assets/images/gallery_interior_1793542983026.jpg',
+    participatingArtists: ['Rani Madane', 'Mohan Baral', 'Krishna', 'Sumitra Verma', 'Jiten Sahu', 'Chirayu Kumar Sinha', 'Dhruva Tiwari'],
+    artworksCount: 28
+  },
+  {
+    id: 'canvas-for-a-life',
+    title: "Canvas for A' Life",
+    subtitle: 'A group exhibition exploring art, care and community',
+    dates: '15 December 2026 – 15 January 2027',
+    dateRange: { start: '2026-12-15', end: '2027-01-15' },
+    status: 'upcoming',
+    curator: 'Dhruva Tiwari',
+    location: "Dhruva's Art Studio N Gallery, Raipur",
+    description: "A monumental showcase investigating the intimate boundaries between domestic everyday life, mutual care, and the expanded field of painting. Artists interrogate how personal domestic narratives resonate within shared cultural habitats.",
+    curatorialEssay: "This exhibition centers around the idea that living itself is an artistic substrate. Bringing together over thirty new canvases across varied generational perspectives, Canvas for A' Life honors the quiet rituals that sustain society in an accelerating modern world.",
+    image: '/src/assets/images/watercolor_landscape_1793542982805.jpg',
+    heroImage: '/src/assets/images/gallery_exterior_1793542981829.jpg',
+    participatingArtists: ['Jiten Sahu', 'Sumitra Verma', 'Mohan Baral', 'Krishna', 'Dhruva Tiwari'],
+    artworksCount: 32
+  },
+  {
+    id: 'the-decameron',
+    title: 'The Decameron',
+    subtitle: 'Ten voices reflecting on solitude, storytelling and renewal',
+    dates: '14 – 21 February 2026',
+    dateRange: { start: '2026-02-14', end: '2026-02-21' },
+    status: 'past',
+    curator: 'Jiten Sahu',
+    location: "Main Exhibition Hall, Dhruva's Gallery",
+    description: "Inspired by classical allegorical literature, this curated winter suite examined ten visual narratives born of retreat and collective human resilience across mixed media and oil paintings.",
+    curatorialEssay: "Storytelling has always served as the fundamental sanctuary against crisis. Through intimate compositions, each participating artist constructs a visual allegory of endurance and quiet illumination.",
+    image: '/public/assets/gallery/gallery_installation_hall.jpg',
+    heroImage: '/src/assets/images/gallery_interior_1793542983026.jpg',
+    participatingArtists: ['Jiten Sahu', 'Mohan Baral', 'Rani Madane', 'Dhruva Tiwari'],
+    artworksCount: 22
+  },
+  {
+    id: '8-voices',
+    title: '8 Voices',
+    subtitle: 'Polyphonic dialogues in contemporary regional aesthetics',
+    dates: 'December 2025',
+    dateRange: { start: '2025-12-01', end: '2025-12-28' },
+    status: 'past',
+    curator: 'Chirayu Kumar Sinha',
+    location: "Dhruva's Art Studio N Gallery",
+    description: "Eight distinct artistic trajectories coalescing in one unified curatorial arena, interrogating state identity, environmental flux, and the evolving visual idioms of Central India.",
+    curatorialEssay: "Polyphony in music relies on independent melodies existing in constructive tension. In 8 Voices, the gallery became a resonating chamber for contrasting materials: from carved stone to industrial pigment.",
+    image: '/public/assets/gallery/gallery_interior_about.jpg',
+    heroImage: '/src/assets/images/gallery_interior_1793542983026.jpg',
+    participatingArtists: ['Krishna', 'Sumitra Verma', 'Rani Madane', 'Mohan Baral', 'Jiten Sahu', 'Dhruva Tiwari'],
+    artworksCount: 24
+  },
+  {
+    id: 'antar-yatra',
+    title: 'Antar Yatra',
+    subtitle: 'Inner journeys, spiritual geographies and contemplative art',
+    dates: 'April 2026',
+    dateRange: { start: '2026-04-05', end: '2026-04-26' },
+    status: 'past',
+    curator: 'Dhruva Tiwari',
+    location: "Upper Gallery & Sculpture Court",
+    description: "An introspective exposition charting meditation, internal landscapes, and the spiritual geometries of memory through pigment, fiber, and spatial bronze.",
+    curatorialEssay: "The inner journey is rarely linear. Antar Yatra documented the quiet hours of studio practice where external distraction dissolves into pure tonal resonance and contemplative form.",
+    image: '/src/assets/images/watercolor_landscape_1793542982805.jpg',
+    heroImage: '/src/assets/images/gallery_interior_1793542983026.jpg',
+    participatingArtists: ['Sumitra Verma', 'Jiten Sahu', 'Krishna'],
+    artworksCount: 19
+  },
+  {
+    id: 'haatha',
+    title: 'Haatha',
+    subtitle: 'The intelligence of the hand, craft origins and modern form',
+    dates: 'December 2025',
+    dateRange: { start: '2025-12-10', end: '2025-12-31' },
+    status: 'past',
+    curator: 'Jiten Sahu',
+    location: "Sculpture Studio & Courtyard",
+    description: "Honoring manual labor, tactile knowledge, and the unmediated relationship between human fingers, raw clay, beaten copper, and handspun textiles.",
+    curatorialEssay: "In an age of digital mediation, the human hand remains an infallible sensory organ. Haatha celebrated the touch, friction, and biological memory embedded in physical making.",
+    image: '/public/assets/gallery/sculpture_maati_torso.jpg',
+    heroImage: '/src/assets/images/gallery_exterior_1793542981829.jpg',
+    participatingArtists: ['Rani Madane', 'Chirayu Kumar Sinha', 'Krishna'],
+    artworksCount: 26
+  },
+  {
+    id: 'gaura',
+    title: 'Gaura',
+    subtitle: 'Ritual traditions reinterpreted through contemporary sculpture',
+    dates: 'April 2026',
+    dateRange: { start: '2026-04-10', end: '2026-04-30' },
+    status: 'past',
+    curator: 'Chirayu Kumar Sinha',
+    location: "Dhruva's Art Studio N Gallery",
+    description: "Reinterpreting the revered Gaura-Gauri ceremonial forms of Chhattisgarh, translating festive ritual sculpture into modern sculptural syntax.",
+    curatorialEssay: "Festive symbols carry thousands of years of living communal affection. Gaura presented these deities not as static museum relics, but as vigorous dynamic conduits of devotion and modern artistic inquiry.",
+    image: '/public/assets/gallery/exhibition_heads_panoramic.jpg',
+    heroImage: '/src/assets/images/gallery_interior_1793542983026.jpg',
+    participatingArtists: ['Rani Madane', 'Chirayu Kumar Sinha', 'Dhruva Tiwari'],
+    artworksCount: 18
+  },
+  {
+    id: 'the-equinox-collection',
+    title: 'The Equinox Collection',
+    subtitle: 'Light equilibrium, landscape studies and plein-air works',
+    dates: '22 – 27 March 2026',
+    dateRange: { start: '2026-03-22', end: '2026-03-27' },
+    status: 'past',
+    curator: 'Dhruva Tiwari',
+    location: "Garden Pavilion & Main Gallery",
+    description: "A seasonal plein-air celebration coinciding with the vernal equinox, showcasing luminous watercolors, landscape canvases, and atmospheric atmospheric studies.",
+    curatorialEssay: "When night and day achieve fleeting mathematical balance, natural light possesses an extraordinary crystalline clarity. The works captured this ephemeral atmospheric equilibrium across Central India's forests.",
+    image: '/src/assets/images/watercolor_landscape_1793542982805.jpg',
+    heroImage: '/src/assets/images/gallery_interior_1793542983026.jpg',
+    participatingArtists: ['Mohan Baral', 'Jiten Sahu', 'Sumitra Verma'],
+    artworksCount: 30
+  },
+  {
+    id: 'rhythms-of-black-and-white',
+    title: 'Rhythms of Black & White',
+    subtitle: 'Monochrome mastery across ink, charcoal and raw clay',
+    dates: '10 – 24 July 2026',
+    dateRange: { start: '2026-07-10', end: '2026-07-24' },
+    status: 'past',
+    curator: 'Jiten Sahu',
+    location: "Main Exhibition Hall",
+    description: "Stripping color away to expose the fundamental architecture of tone, shadow, spatial balance, and expressive charcoal mark-making.",
+    curatorialEssay: "Monochrome is not the absence of hue; it is the revelation of structural truth. By paring down visual elements to stark light and deep soot, these works reveal the visceral pulse of drawing.",
+    image: '/src/assets/images/forest_monochrome_1793542982624.jpg',
+    heroImage: '/src/assets/images/gallery_interior_1793542983026.jpg',
+    participatingArtists: ['Krishna', 'Mohan Baral', 'Dhruva Tiwari', 'Sumitra Verma'],
+    artworksCount: 25
+  }
+];
+
+export const INITIAL_ARTISTS: Artist[] = [
+  {
+    id: 'jiten-sahu',
+    name: 'Jiten Sahu',
+    discipline: 'Painter',
+    role: 'Conceptor',
+    portrait: '/public/assets/gallery/artist_jiten_sahu.jpg',
+    location: 'Raipur, Chhattisgarh',
+    bio: "Jiten Sahu is a renowned master painter and intellectual force in Central Indian contemporary art. His compositions bridge traditional regional mythologies with modern painterly abstraction. Engaging intimately with the cultural fabric of Chhattisgarh for decades, Jiten's works have been exhibited at premier biennials and galleries nationally.",
+    statement: "“Art is a way of seeing, questioning and belonging. The idea of Dhruva's Art Studio & Gallery comes from a long engagement with art, artists and the cultural life of our region. It is conceived as a space that values sincerity in artistic practice, encourages new expressions and remains open to diverse voices.”",
+    featuredArtworks: ['The Whispering Earth', 'Fragments of Antiquity', 'Monsoon Allegory'],
+    exhibitions: ['Maati Ka Avtaran', 'Canvas for A’ Life', 'The Decameron', '8 Voices', 'The Equinox Collection']
+  },
+  {
+    id: 'rani-madane',
+    name: 'Rani Madane',
+    discipline: 'Sculptor',
+    role: 'Master Sculptor',
+    portrait: '/public/assets/gallery/artist_rani_madane.jpg',
+    location: 'Bhilai / Raipur',
+    bio: 'Rani Madane is an acclaimed contemporary sculptor known for her monumental explorations of raw clay, fired terracotta, and forged metals. Her sculptures channel primal maternal energy, human vulnerability, and the sacred connection between feminine form and the earth.',
+    statement: "“Clay possesses its own consciousness. As a sculptor, I do not impose form upon it; rather, I listen to its grain, its dampness, and its desire to stand in space.”",
+    featuredArtworks: ['Vessel of Becoming', 'Prithvi Rupa', 'Echo of the Silent Sentinel'],
+    exhibitions: ['Maati Ka Avtaran', 'Haatha', 'Gaura', '8 Voices']
+  },
+  {
+    id: 'mohan-baral',
+    name: 'Mohan Baral',
+    discipline: 'Painter',
+    role: 'Senior Painter',
+    portrait: '/public/assets/gallery/artist_mohan_baral.jpg',
+    location: 'Raipur, Chhattisgarh',
+    bio: 'Mohan Baral is an evocative painter whose canvases capture the luminous interplay of landscape light, human silhouettes, and atmospheric humidity. His mastery over watercolor washes and oil glazes has won him critical acclaim throughout India.',
+    statement: "“A landscape is never merely geography; it is an emotional atmosphere remembered through light and silent contemplation.”",
+    featuredArtworks: ['Valley of Gold and Mist', 'Dusk at Mahanadi', 'Shadows of Sal Grove'],
+    exhibitions: ['Maati Ka Avtaran', 'Canvas for A’ Life', 'The Equinox Collection', 'Rhythms of Black & White']
+  },
+  {
+    id: 'krishna',
+    name: 'Krishna',
+    discipline: 'Mixed Media',
+    role: 'Contemporary Practitioner',
+    portrait: '/public/assets/gallery/artist_krishna.jpg',
+    location: 'Raipur, Chhattisgarh',
+    bio: 'Krishna is a vanguard experimental artist working across organic materials, found forest detritus, handwoven textiles, and industrial pigment. His tactile wall reliefs challenge traditional categories of craft and high contemporary art.',
+    statement: "“I seek the tactile friction where ancient tribal material intuition meets the restlessness of 21st-century urban existence.”",
+    featuredArtworks: ['Tactile Memory No. 7', 'Woven Strata', 'Charcoal & Ochre Field'],
+    exhibitions: ['Maati Ka Avtaran', 'Canvas for A’ Life', '8 Voices', 'Rhythms of Black & White']
+  },
+  {
+    id: 'sumitra-verma',
+    name: 'Sumitra Verma',
+    discipline: 'Painter',
+    role: 'Contemporary Painter',
+    portrait: '/public/assets/gallery/artist_sumitra_verma.jpg',
+    location: 'Durg, Chhattisgarh',
+    bio: 'Sumitra Verma explores feminine interiority, quiet domestic architecture, and botanical memory in richly layered oil and tempera canvases. Her work offers intimate meditations on time, domesticity, and the quiet dignity of everyday labor.',
+    statement: "“My paintings are quiet rooms where time slows down, allowing us to notice the light filtering across a courtyard floor.”",
+    featuredArtworks: ['Courtyard in Solitude', 'Botanical Nocturne', 'Threads of Morning'],
+    exhibitions: ['Maati Ka Avtaran', 'Canvas for A’ Life', 'Antar Yatra', '8 Voices']
+  },
+  {
+    id: 'chirayu-kumar-sinha',
+    name: 'Chirayu Kumar Sinha',
+    discipline: 'Sculptor',
+    role: 'Director',
+    portrait: '/public/assets/gallery/artist_chirayu_sinha.jpg',
+    location: 'Raipur, Chhattisgarh',
+    bio: 'Chirayu Kumar Sinha serves as Gallery Director and is a renowned contemporary sculptor and curator. He combines architectural spatial rigor with experimental terracotta, cast bronze, and stone to examine post-industrial landscapes.',
+    statement: "“Building a living art ecosystem in Chhattisgarh. As Director, my focus is to develop the gallery as a sustainable cultural platform — through curated exhibitions, collaborative projects, learning programmes and partnerships. We aim to create opportunities for artists across generations.”",
+    featuredArtworks: ['Monolith in Repose', 'Axis Mundi (Raipur)', 'Fired Earth Composition IV'],
+    exhibitions: ['Maati Ka Avtaran', 'Haatha', 'Gaura', '8 Voices']
+  },
+  {
+    id: 'dhruva-tiwari',
+    name: 'Dhruva Tiwari',
+    discipline: 'Painter',
+    role: 'Gallery Owner & Founder',
+    portrait: '/public/assets/gallery/artist_dhruva_tiwari.jpg',
+    location: 'Raipur, Chhattisgarh',
+    bio: 'Dhruva Tiwari is the visionary founder and patron behind Dhruva’s Art Studio N Gallery, as well as an accomplished expressive painter. Driven by a lifelong commitment to giving Central India a world-class institution, he conceives the gallery as a home for courageous artistic experimentation.',
+    statement: "“A space for art, people and conversations. Dhruva's Art Studio & Gallery was born from the belief that Raipur needs a dedicated and thoughtfully curated space for contemporary art — a space that supports artists, encourages experimentation and brings art closer to people.”",
+    featuredArtworks: ['The Living Threshold', 'Symphony of Ochre and Indigo', 'Eternal Canvas'],
+    exhibitions: ['Maati Ka Avtaran', 'Canvas for A’ Life', 'The Decameron', 'Antar Yatra', 'Rhythms of Black & White']
+  }
+];
+
+export const INITIAL_ARTWORKS: Artwork[] = [
+  {
+    id: 'art-1',
+    title: 'Maati Ka Avtaran (Sculptural Bust)',
+    artistId: 'rani-madane',
+    artistName: 'Rani Madane',
+    category: 'Sculptures',
+    medium: 'Raw Terracotta, Fire-treated Local Clay',
+    dimensions: '42 x 34 x 26 cm',
+    year: 2026,
+    priceINR: 125000,
+    image: '/src/assets/images/terracotta_sculpture_1793542982435.jpg',
+    description: 'A seminal work from the Maati Ka Avtaran exhibition, evoking the ancient earthen traditions of Bastar through raw hand-built terracotta folds and deep facial contours.',
+    isAvailable: true,
+    featured: true
+  },
+  {
+    id: 'art-2',
+    title: 'Canvas for A’ Life: Golden Valley',
+    artistId: 'mohan-baral',
+    artistName: 'Mohan Baral',
+    category: 'Paintings',
+    medium: 'Watercolor & Raw Pigments on 450gsm Arches Paper',
+    dimensions: '76 x 102 cm (Framed in Teak Wood)',
+    year: 2026,
+    priceINR: 95000,
+    image: '/src/assets/images/watercolor_landscape_1793542982805.jpg',
+    description: 'An atmospheric landscape exploring golden hour luminosity across the hills of Central India. Features deep mineral indigo and natural mustard earth washes.',
+    isAvailable: true,
+    featured: true
+  },
+  {
+    id: 'art-3',
+    title: 'Monolith in Repose: Sacred Grove Study',
+    artistId: 'chirayu-kumar-sinha',
+    artistName: 'Chirayu Kumar Sinha',
+    category: 'Sculptures',
+    medium: 'Cast Bronze and Black Granite Base',
+    dimensions: '58 x 28 x 28 cm',
+    year: 2025,
+    priceINR: 240000,
+    image: '/src/assets/images/forest_monochrome_1793542982624.jpg',
+    description: 'Monumental bronze sculpture reflecting the towering sacred Sal trees of Kanger Valley, exploring human reverence and architectural permanence.',
+    isAvailable: true,
+    featured: true
+  },
+  {
+    id: 'art-4',
+    title: 'Antar Yatra: Red Earth Contemplation',
+    artistId: 'jiten-sahu',
+    artistName: 'Jiten Sahu',
+    category: 'Abstract Art',
+    medium: 'Oil and Mineral Sand on Linen Canvas',
+    dimensions: '120 x 150 cm',
+    year: 2026,
+    priceINR: 320000,
+    image: '/public/assets/gallery/artwork_red_earth.jpg',
+    description: 'Rich impasto exploration of sacred cinnabar red, earthen textures, and geometric abstraction conveying the spiritual pulse of tribal Chhattisgarh.',
+    isAvailable: true,
+    featured: true
+  },
+  {
+    id: 'art-5',
+    title: 'The Living Threshold',
+    artistId: 'dhruva-tiwari',
+    artistName: 'Dhruva Tiwari',
+    category: 'Contemporary Art',
+    medium: 'Mixed Media & Gold Leaf on Belgian Canvas',
+    dimensions: '90 x 120 cm',
+    year: 2026,
+    priceINR: 185000,
+    image: '/src/assets/images/gallery_interior_1793542983026.jpg',
+    description: 'Lyrical abstract composition balancing geometric sanctuary portals with spontaneous gestural strokes of burnt burgundy and raw sienna.',
+    isAvailable: true,
+    featured: true
+  },
+  {
+    id: 'art-6',
+    title: 'Tactile Memory: Fiber & Earth No. 4',
+    artistId: 'krishna',
+    artistName: 'Krishna',
+    category: 'Mixed Media',
+    medium: 'Handspun Kosa Silk, Ash, and Earth Pigment on Wood',
+    dimensions: '80 x 80 cm',
+    year: 2025,
+    priceINR: 78000,
+    image: '/public/assets/gallery/sculpture_maati_torso.jpg',
+    description: 'A tactile textural relief that interrogates the tactile memory of handlooms and raw clay traditions in the rural hinterlands.',
+    isAvailable: true,
+    featured: false
+  },
+  {
+    id: 'art-7',
+    title: 'Courtyard at Noon',
+    artistId: 'sumitra-verma',
+    artistName: 'Sumitra Verma',
+    category: 'Paintings',
+    medium: 'Oil on Hand-stretched Linen',
+    dimensions: '60 x 90 cm',
+    year: 2026,
+    priceINR: 110000,
+    image: '/src/assets/images/watercolor_landscape_1793542982805.jpg',
+    description: 'A quiet domestic interior featuring dappled sunlit terracotta tiles, brass vessels, and shadows evoking quiet moments of afternoon rest.',
+    isAvailable: true,
+    featured: false
+  },
+  {
+    id: 'art-8',
+    title: 'Rhythms of Monoliths: Limited Archival Print',
+    artistId: 'chirayu-kumar-sinha',
+    artistName: 'Chirayu Kumar Sinha',
+    category: 'Prints',
+    medium: 'Archival Giclée Print on Hahnemühle Museum Etching (Edition 1/15)',
+    dimensions: '50 x 70 cm',
+    year: 2026,
+    priceINR: 35000,
+    image: '/src/assets/images/forest_monochrome_1793542982624.jpg',
+    description: 'Limited edition high-fidelity museum print capturing the sculptural forest textures of the Bastar plateau in monochrome silver tone.',
+    isAvailable: true,
+    featured: false
+  },
+  {
+    id: 'art-9',
+    title: 'Gaura: The Divine Union',
+    artistId: 'rani-madane',
+    artistName: 'Rani Madane',
+    category: 'Sculptures',
+    medium: 'Terracotta & Brass Wire Inlay',
+    dimensions: '52 x 30 x 24 cm',
+    year: 2026,
+    priceINR: 165000,
+    image: '/src/assets/images/terracotta_sculpture_1793542982435.jpg',
+    description: 'An evocative sculptural interpretation of Gaura-Gauri ceremonial forms, celebrating divine union and cosmic fertility.',
+    isAvailable: true,
+    featured: true
+  }
+];
+
+export const INITIAL_EVENTS: EventProgram[] = [
+  {
+    id: 'artist-talk-language-of-material',
+    title: 'Artist Talk: The Language of Material',
+    type: 'Artist Talk',
+    category: 'events',
+    subtitle: 'A conversation on clay, process and contemporary practice',
+    date: '26 September 2026',
+    time: '4:00 PM – 6:00 PM IST',
+    venue: "Main Amphitheatre & Gallery Hall, Dhruva's Art Studio",
+    instructor: 'Rani Madane & Chirayu Kumar Sinha',
+    fee: 'Complimentary / Registration Required',
+    image: '/src/assets/images/forest_monochrome_1793542982624.jpg',
+    description: 'Join master sculptors Rani Madane and Chirayu Kumar Sinha for an intimate conversation on how indigenous clay, mineral pigments, and kiln firing techniques inform modern sculptural poetics.',
+    capacity: 60,
+    registeredCount: 42
+  },
+  {
+    id: 'the-equinox-camp',
+    title: 'The Equinox Collection: Watercolor Landscape Camp',
+    type: 'Camp',
+    category: 'programs',
+    subtitle: 'Intensive plein-air masterclass on atmosphere, wash technique and light',
+    date: '24 March 2026',
+    time: '10:00 AM – 4:30 PM IST',
+    venue: "Gallery Sculpture Gardens & Studio Pavilion",
+    instructor: 'Mohan Baral & Jiten Sahu',
+    fee: '₹2,500 (Includes archival paper & pigments)',
+    image: '/src/assets/images/watercolor_landscape_1793542982805.jpg',
+    description: 'An immersive full-day landscape painting workshop exploring the tonal equilibrium of the vernal equinox. Participants learn traditional dry-on-wet and granulating wash techniques.',
+    capacity: 25,
+    registeredCount: 19
+  },
+  {
+    id: 'clay-and-contemporary-practice',
+    title: 'Clay and Contemporary Practice',
+    type: 'Workshop',
+    category: 'programs',
+    subtitle: 'Three-day experimental studio workshop on terracotta form and firing',
+    date: '15 – 17 January 2027',
+    time: '11:00 AM – 5:00 PM Daily',
+    venue: "Dhruva's Art Studio Ceramic Atelier",
+    instructor: 'Rani Madane & Guest Artisans',
+    fee: '₹4,800 (Materials & kiln firing included)',
+    image: '/src/assets/images/terracotta_sculpture_1793542982435.jpg',
+    description: 'A hands-on, multi-day master workshop examining contemporary ceramic and terracotta sculpture. Participants will craft original pieces and learn traditional pit-firing and surface patination.',
+    capacity: 20,
+    registeredCount: 12
+  }
+];
+
+export const GALLERY_LEADERSHIP = [
+  {
+    name: 'Dhruva Tiwari',
+    role: 'Gallery Owner & Founder',
+    label: "GALLERY OWNER'S NOTE",
+    quote: "“A space for art, people and conversations.”",
+    text: "Dhruva's Art Studio & Gallery was born from the belief that Raipur needs a dedicated and thoughtfully curated space for contemporary art — a space that supports artists, encourages experimentation and brings art closer to people. Our aim is to build a long-term platform that grows with the region's artistic community and creates meaningful cultural dialogue.",
+    image: '/public/assets/gallery/artist_dhruva_tiwari.jpg',
+    bio: "Visionary founder of Dhruva's Art Studio N Gallery and lifelong patron of Central Indian arts. An accomplished painter himself, Dhruva conceptualized the space to ensure emerging regional artists have a world-class platform in Chhattisgarh."
+  },
+  {
+    name: 'Chirayu Kumar Sinha',
+    role: 'Director',
+    label: "DIRECTOR'S NOTE",
+    quote: "“Building a living art ecosystem in Chhattisgarh.”",
+    text: "As Director, my focus is to develop the gallery as a sustainable cultural platform — through curated exhibitions, collaborative projects, learning programmes and partnerships. We aim to create opportunities for artists across generations and practices, and contribute to the growing contemporary art discourse from Chhattisgarh.",
+    image: '/public/assets/gallery/artist_chirayu_sinha.jpg',
+    bio: "Director and celebrated sculptor whose curatorial vision emphasizes material authenticity and cross-generational dialogue. Chirayu oversees the gallery's museum-grade exhibition programming and institutional partnerships."
+  },
+  {
+    name: 'Jiten Sahu',
+    role: 'Conceptor',
+    label: "CONCEPTOR'S NOTE",
+    quote: "“Art as a way of seeing, questioning and belonging.”",
+    text: "The idea of Dhruva's Art Studio & Gallery comes from a long engagement with art, artists and the cultural life of our region. It is conceived as a space that values sincerity in artistic practice, encourages new expressions and remains open to diverse voices. I see it as a bridge — connecting local experiences with wider contemporary art conversations.",
+    image: '/public/assets/gallery/artist_jiten_sahu.jpg',
+    bio: "Senior artist, thinker, and conceptor of the gallery. Jiten brings decades of artistic inquiry and mentorship, ensuring the space remains faithful to regional cultural roots while pushing contemporary aesthetic boundaries."
+  }
+];
+
+export const GALLERY_PILLARS = [
+  {
+    id: 'exhibitions',
+    title: 'Exhibitions',
+    description: 'Curated shows by emerging and established artists from Chhattisgarh, India, and abroad.',
+    icon: 'palette'
+  },
+  {
+    id: 'programs',
+    title: 'Programs',
+    description: 'Talks, workshops, masterclasses, and learning initiatives bridging theory and practice.',
+    icon: 'book-open'
+  },
+  {
+    id: 'collaborations',
+    title: 'Collaborations',
+    description: 'Partnerships with cultural institutions, community practitioners, and craft guilds.',
+    icon: 'message-circle'
+  }
+];

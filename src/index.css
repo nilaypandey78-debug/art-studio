@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-editorial: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --color-burgundy: #760D24;
+  --color-burgundy-dark: #560819;
+  --color-burgundy-light: #941331;
+  --color-ivory: #FAF7F2;
+  --color-ivory-warm: #F3EEE5;
+  --color-ivory-paper: #FBF9F5;
+  --color-charcoal: #1C1917;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-sans);
+  background-color: #FAF7F2;
+  color: #1C1917;
+}
+
+/* Custom editorial typography utility classes */
+.font-display {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.font-cormorant {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+/* Hide scrollbars for slick horizontal gallery rails */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

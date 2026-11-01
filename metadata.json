@@ -1,0 +1,6 @@
+{
+  "name": "Dhruva's Art Studio N Gallery",
+  "description": "A contemporary art space in Raipur, Chhattisgarh. Exhibitions, featured artists, art collection marketplace, events, and cultural dialogues.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
