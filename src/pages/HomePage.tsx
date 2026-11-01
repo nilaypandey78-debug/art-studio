@@ -1,5 +1,6 @@
 import React from 'react';
-import { ArrowRight, Calendar, MapPin, Sparkles, Compass, ShieldCheck } from 'lucide-react';
+import { motion } from 'motion/react';
+import { ArrowRight, Calendar, MapPin, Sparkles, Compass, ShieldCheck, Clock, Eye } from 'lucide-react';
 import { Exhibition, Artist, Artwork, NavigationTab } from '../types';
 import { GALLERY_INFO } from '../data/galleryData';
 
@@ -25,28 +26,78 @@ export const HomePage: React.FC<HomePageProps> = ({
   const currentExhibition = exhibitions.find(e => e.id === 'maati-ka-avtaran') || exhibitions[0];
   const upcomingExhibition = exhibitions.find(e => e.id === 'canvas-for-a-life') || exhibitions[1];
 
+  const marqueeItems = [
+    "DHRUVA'S ART STUDIO N GALLERY",
+    "RAIPUR, CHHATTISGARH",
+    "CURRENT EXHIBITION: MAATI KA AVTARAN (25–27 SEPT 2026)",
+    "UPCOMING: CANVAS FOR A' LIFE",
+    "ONLINE ART MARKETPLACE & INVENTORY",
+    "TUESDAY – SUNDAY: 11:00 AM – 7:30 PM",
+    "FREE PUBLIC ADMISSION",
+    "NEAR KALPAVRIKSH RESORT, OLD DHAMTARI ROAD"
+  ];
+
   return (
     <div className="space-y-16 sm:space-y-24 pb-20">
       
-      {/* 1. HERO SECTION Matching Reference Image 3 */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+      {/* 1. ANIMATED HERO / FRONTHEAD SECTION Matching Reference Image 3 */}
+      <section className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-12 overflow-hidden">
+        
+        {/* Subtle Ambient Radial Glow */}
+        <div 
+          className="absolute -top-16 right-1/4 w-96 h-96 bg-[#760D24]/5 rounded-full blur-3xl pointer-events-none animate-pulse" 
+          style={{ animationDuration: '6s' }}
+        />
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
           
-          {/* Hero Left Content */}
-          <div className="lg:col-span-5 space-y-6">
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#760D24] block">
-              Raipur, Chhattisgarh
-            </span>
+          {/* Hero Left Content with Staggered Entrance */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-5 space-y-6 relative z-10"
+          >
+            {/* Kicker with reveal animation */}
+            <motion.div 
+              initial={{ opacity: 0, x: -15 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="inline-flex items-center gap-2"
+            >
+              <span className="w-2 h-2 rounded-full bg-[#760D24]" />
+              <span className="text-xs font-semibold uppercase tracking-[0.22em] text-[#760D24]">
+                Raipur, Chhattisgarh
+              </span>
+            </motion.div>
 
-            <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#1C1917] leading-[1.15]">
+            {/* Headline with Spring-Assisted Flow */}
+            <motion.h1 
+              initial={{ opacity: 0, y: 25 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#1C1917] leading-[1.15]"
+            >
               A Contemporary Art Space in Chhattisgarh
-            </h1>
+            </motion.h1>
 
-            <p className="text-base sm:text-lg text-stone-600 font-sans leading-relaxed">
+            {/* Subtitle */}
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
+              className="text-base sm:text-lg text-stone-600 font-sans leading-relaxed"
+            >
               A platform for artistic expression, dialogue and cultural exchange.
-            </p>
+            </motion.p>
 
-            <div className="pt-2">
+            {/* CTA and Explore Link */}
+            <motion.div 
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="pt-2 flex flex-wrap items-center gap-6"
+            >
               <button
                 onClick={() => onNavigate('exhibitions')}
                 className="inline-flex items-center gap-2 text-sm font-semibold text-[#1C1917] group cursor-pointer"
@@ -54,33 +105,108 @@ export const HomePage: React.FC<HomePageProps> = ({
                 <span className="border-b-2 border-[#760D24] pb-0.5 group-hover:text-[#760D24] transition-colors">
                   Explore Exhibitions
                 </span>
-                <span className="text-[#760D24] transition-transform group-hover:translate-x-1">→</span>
+                <motion.span 
+                  className="text-[#760D24] inline-block"
+                  animate={{ x: [0, 4, 0] }}
+                  transition={{ repeat: Infinity, duration: 1.8, ease: 'easeInOut' }}
+                >
+                  →
+                </motion.span>
               </button>
-            </div>
-          </div>
 
-          {/* Hero Right Photography: Gallery Building */}
-          <div className="lg:col-span-7">
-            <div className="rounded-xl overflow-hidden border border-[#E7E2D9] shadow-xl bg-stone-200 aspect-[4/3] sm:aspect-[16/11] relative group">
+              <button
+                onClick={() => onNavigate('collection')}
+                className="text-xs uppercase tracking-wider text-stone-500 hover:text-[#760D24] font-medium transition-colors"
+              >
+                View Collection (Store) →
+              </button>
+            </motion.div>
+
+            {/* Curatorial Micro-Badges */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.65 }}
+              className="pt-4 border-t border-[#E7E2D9] flex flex-wrap items-center gap-4 text-xs text-stone-500"
+            >
+              <div className="flex items-center gap-1.5">
+                <ShieldCheck className="w-3.5 h-3.5 text-[#760D24]" />
+                <span>Original Studio Works</span>
+              </div>
+              <span className="text-stone-300">•</span>
+              <div className="flex items-center gap-1.5">
+                <Clock className="w-3.5 h-3.5 text-[#760D24]" />
+                <span>Open Today: 11 AM – 7:30 PM</span>
+              </div>
+            </motion.div>
+          </motion.div>
+
+          {/* Hero Right Photography: Gallery Building with Scale-Up Reveal */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.94, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-7 relative"
+          >
+            {/* Elegant shadow container with interactive hover float */}
+            <motion.div 
+              whileHover={{ y: -6 }}
+              transition={{ duration: 0.4, ease: 'easeOut' }}
+              className="rounded-xl overflow-hidden border border-[#E7E2D9] shadow-2xl bg-stone-200 aspect-[4/3] sm:aspect-[16/11] relative group"
+            >
               <img
                 src="/public/assets/gallery/real_building_exterior.jpg"
                 alt="Dhruva's Art Studio N Gallery Building in Raipur"
                 referrerPolicy="no-referrer"
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-102"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-103"
               />
-              <div className="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-md px-4 py-2.5 rounded-lg border border-white/60 shadow-sm flex items-center justify-between text-xs">
-                <span className="font-serif font-semibold text-stone-900">
-                  Dhruva’s Art Studio N Gallery • Raipur
-                </span>
-                <span className="text-[#760D24] font-medium hidden sm:inline">
-                  Old Dhamtari Road
-                </span>
-              </div>
-            </div>
-          </div>
+
+              {/* Shimmer gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80" />
+
+              {/* Live Location & Gallery Badge */}
+              <motion.div 
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.5 }}
+                className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md px-4 py-3 rounded-lg border border-white/60 shadow-lg flex items-center justify-between text-xs"
+              >
+                <div className="flex items-center gap-2">
+                  <div className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping" />
+                  <span className="font-serif font-bold text-stone-900 text-sm">
+                    Dhruva’s Art Studio N Gallery
+                  </span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="text-[#760D24] font-medium hidden sm:inline">
+                    Raipur, Old Dhamtari Road
+                  </span>
+                  <span className="px-2 py-0.5 bg-[#760D24] text-white rounded text-[10px] font-semibold uppercase tracking-wider">
+                    Free Entry
+                  </span>
+                </div>
+              </motion.div>
+            </motion.div>
+          </motion.div>
 
         </div>
       </section>
+
+      {/* CONTINUOUS CURATORIAL TICKER / MARQUEE */}
+      <div className="w-full bg-[#1C1917] text-[#FAF7F2] py-3 overflow-hidden border-y border-[#38332E] select-none">
+        <motion.div 
+          className="flex whitespace-nowrap gap-12 font-sans text-xs tracking-[0.2em] font-medium text-[#D6CEBE]"
+          animate={{ x: ['0%', '-50%'] }}
+          transition={{ repeat: Infinity, duration: 32, ease: 'linear' }}
+        >
+          {[...marqueeItems, ...marqueeItems].map((item, idx) => (
+            <div key={idx} className="flex items-center gap-10 shrink-0">
+              <span>{item}</span>
+              <span className="text-[#760D24] text-sm">✦</span>
+            </div>
+          ))}
+        </motion.div>
+      </div>
 
       {/* 2. WHAT'S ON SECTION Matching Reference Image 3 */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'motion/react';
 import { Search, ShoppingBag, Heart, Menu, X, ShieldCheck } from 'lucide-react';
 import { NavigationTab } from '../types';
 
@@ -45,8 +46,10 @@ export const Navbar: React.FC<NavbarProps> = ({
         <div className="flex items-center justify-between h-20">
           
           {/* Brand Logo & Wordmark matching Reference */}
-          <div 
+          <motion.div 
             onClick={() => handleTabClick('home')}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
             className="flex items-center gap-3 cursor-pointer group select-none shrink-0"
           >
             {/* Circular Black and Gold Emblem */}
@@ -68,9 +71,9 @@ export const Navbar: React.FC<NavbarProps> = ({
                 Art Studio N Gallery
               </span>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Desktop Navigation Links */}
+          {/* Desktop Navigation Links with animated gliding indicator */}
           <nav className="hidden lg:flex items-center gap-7 xl:gap-8 text-[14px] font-normal text-[#292524]">
             <div className="h-5 w-[1px] bg-[#D7D0C5] mr-1" aria-hidden="true" />
             {navItems.map((item) => {
@@ -85,8 +88,10 @@ export const Navbar: React.FC<NavbarProps> = ({
                 >
                   {item.label}
                   {isActive && (
-                    <span 
-                      className="absolute bottom-0 left-0 w-full h-[2.5px] bg-[#760D24] rounded-full transition-all"
+                    <motion.span 
+                      layoutId="activeTabIndicator"
+                      className="absolute bottom-0 left-0 w-full h-[2.5px] bg-[#760D24] rounded-full"
+                      transition={{ type: 'spring', stiffness: 400, damping: 32 }}
                     />
                   )}
                 </button>

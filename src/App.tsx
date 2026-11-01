@@ -20,8 +20,10 @@ import { EventRegisterModal } from './components/EventRegisterModal';
 import { ArtworkDetailModal } from './components/ArtworkDetailModal';
 import { ArtistDetailModal } from './components/ArtistDetailModal';
 import { ExhibitionDetailModal } from './components/ExhibitionDetailModal';
+import { WelcomeScreen } from './components/WelcomeScreen';
 
 export default function App() {
+  const [showWelcome, setShowWelcome] = useState(true);
   const [currentTab, setCurrentTab] = useState<NavigationTab>('home');
   
   // Primary Repository State (Synchronized across applet)
@@ -140,7 +142,18 @@ export default function App() {
   const cartTotalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
-    <div className="min-h-screen bg-[#FAF7F2] text-[#1C1917] flex flex-col font-sans selection:bg-[#760D24] selection:text-white">
+    <>
+      {/* 2-Second Welcoming Page With Only Logo */}
+      <AnimatePresence>
+        {showWelcome && (
+          <WelcomeScreen
+            onComplete={() => setShowWelcome(false)}
+            durationMs={2000}
+          />
+        )}
+      </AnimatePresence>
+
+      <div className="min-h-screen bg-[#FAF7F2] text-[#1C1917] flex flex-col font-sans selection:bg-[#760D24] selection:text-white">
       
       {/* Top Navigation */}
       <Navbar
@@ -334,5 +347,6 @@ export default function App() {
       />
 
     </div>
+    </>
   );
 }
